@@ -23,7 +23,7 @@ public enum Configurator {
     public final double cruisingSpeed = 0.85; // in mach
 
     public final int range = 15_372; // in kilometers
-    public final int maxTOWeight = 268; // in tonnes
+    public final int maxTOWeight = 268; // in tons
     public final double fuelConsumption = 2.9; // in l/100 paxkm
 
     public final int singleEnginePower = 84_000; // in pounds

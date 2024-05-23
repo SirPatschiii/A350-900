@@ -23,7 +23,7 @@ public class Airplane {
     private final double cruisingSpeed; // in mach
 
     private final int range; // in kilometers
-    private final int maxTOWeight; // in tonnes
+    private final int maxTOWeight; // in tons
     private final double fuelConsumption; // in l/100 paxkm
 
     private final int singleEnginePower; // in pounds
