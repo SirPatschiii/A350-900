@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class CargoArea {
     private final ArrayList<Container> storageAreaAirplaneLeft;
     private final ArrayList<Container> storageAreaAirplaneRight;
-    private int weightLeft; // in kilogramms
-    private int weightRight; // in kilogramms
+    private int weightLeft; // in kilograms
+    private int weightRight; // in kilograms
 
     public CargoArea() {
         storageAreaAirplaneLeft = new ArrayList<>();
