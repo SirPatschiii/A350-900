@@ -8,8 +8,9 @@ public class JetEngine {
     private final HighPressureTurbine highPressureTurbine;
     private final CombustionChamber combustionChamber;
 
+    private final ESide side;
 
-    public JetEngine() {
+    public JetEngine(ESide side) {
         lowPressureShaft = new LowPressureShaft();
         highPressureShaft = new HighPressureShaft();
         fan = new Fan(lowPressureShaft);
@@ -18,5 +19,7 @@ public class JetEngine {
         lowPressureTurbine = new LowPressureTurbine(lowPressureShaft);
         highPressureTurbine = new HighPressureTurbine(highPressureShaft);
         combustionChamber = new CombustionChamber();
+
+        this.side = side;
     }
 }
