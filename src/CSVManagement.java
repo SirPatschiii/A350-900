@@ -9,6 +9,7 @@ public class CSVManagement {
     private ArrayList<ArrayList<Double>> weightList;
     private ArrayList<Integer> amountBaggageList;
     private final ArrayList<Baggage> baggages;
+    private final ArrayList<Passenger> passengers;
 
     private int c;
 
@@ -31,6 +32,7 @@ public class CSVManagement {
         genderList = new ArrayList<>(readCSV.getGender());
         passportIdList = new ArrayList<>(readCSV.getPassportID());
         nameList = new ArrayList<>(readCSV.getName());
+        passengers = new ArrayList<>();
     }
 
     public void generateBaggage() {
@@ -57,6 +59,10 @@ public class CSVManagement {
             String[] temp = nameList.removeFirst().split(" ");
             firstName = temp[0];
             lastName = temp[1];
+            gender = genderList.removeFirst();
+            dateOfBirth = dateOfBirthList.removeFirst();
+
+            passengers.addLast(new Passenger(firstName, lastName, gender, dateOfBirth, 70, 175, "brown", passportID));
         }
     }
 

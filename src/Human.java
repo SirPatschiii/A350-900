@@ -10,14 +10,14 @@ public abstract class Human {
 
     protected String firstName;
     protected String lastName;
-    protected String gender;
+    protected EGender gender;
     protected LocalDate dateOfBirth;
 
     protected double weight;
     protected double height;
     protected String hairColor;
 
-    public Human(String firstName, String lastName, String gender, LocalDate dateOfBirth, double weight, double height,String hairColor) {
+    public Human(String firstName, String lastName, EGender gender, LocalDate dateOfBirth, double weight, double height,String hairColor) {
         this.head = new Head(hairColor);
         this.humanBody = new HumanBody(weight, height);
         this.leftArm = new Arm(ESide.LEFT);
