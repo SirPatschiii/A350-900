@@ -1,7 +1,5 @@
 public class Application {
     public static void main(String[] args) {
-        final JetEngineMediator jetEngineMediator;
-
         // Init of airplane
         Airplane airplane = new Airplane("Lufthansa");
 
@@ -10,8 +8,18 @@ public class Application {
         System.out.println(airplane.getBody().getCabin().toString());
 
         // TODO Airport stuff goes here:
+        Airport airport = new Airport();
 
+        // Generate baggage
+        CSVManagement csvManagement = new CSVManagement();
+        csvManagement.generateBaggage();
 
+        // Implement baggage logistic
+        ConveyorBelt conveyorBelt = new ConveyorBelt();
+        RoboterArm roboterArm = new RoboterArm(new AirportBaggageStorage(10, 10, 5), conveyorBelt);
+        Weigh weigh = new Weigh(conveyorBelt, csvManagement.getBaggages());
+
+        roboterArm.takeBaggageFromConveyorBelt();
 
 
 
@@ -22,6 +30,7 @@ public class Application {
 
         // TODO please leave it at the end of file
         // Gets reference to the control unit from the engine
+        JetEngineMediator jetEngineMediator;
         jetEngineMediator = airplane.getJetEngineMediator();
 
         // Simulate flight

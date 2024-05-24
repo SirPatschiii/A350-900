@@ -7,15 +7,13 @@ public class RoboterArm {
         this.conveyorBelt = conveyorBelt;
     }
 
-    public void takeBaggageFromConveyorBelt(){
-        if(!conveyorBelt.allBaggageItemsCheckedIn()){
+    public void takeBaggageFromConveyorBelt() {
+        while (!conveyorBelt.allBaggageItemsCheckedIn()) {
             Baggage baggage = conveyorBelt.pullBaggage();
 
-            if(baggage != null){
+            if (baggage != null) {
                 airportBaggageStorage.storeBaggage(baggage);
             }
         }
     }
-
-
 }
