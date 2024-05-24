@@ -31,9 +31,6 @@ public class WaitingArea {
         return passengers.poll();
     }
 
-    public List<Passenger> getPassengers() {
-        return new LinkedList<>(passengers); // Return a copy of the list to avoid modification
-    }
 
     public boolean isEmpty() {
         return passengers.isEmpty();
