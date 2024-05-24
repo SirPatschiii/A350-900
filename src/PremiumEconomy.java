@@ -1,21 +1,28 @@
 public class PremiumEconomy extends AirplaneClass {
+    private final char[] seatLetters;
+    private final int[] rows;
+
     public PremiumEconomy() {
         super();
+        seatLetters = new char[]{'A', 'C', 'D', 'E', 'G', 'H', 'K'};
+        rows = new int[]{12, 14, 15};
         addSeats();
     }
 
     @Override
     protected void addSeats() {
-        char[] seatLetters = {'A', 'C', 'D', 'E', 'G', 'H', 'K'};
-        for (int i = 11; i < 12; i++) {
+        for (int row : rows) {
             for (char seatLetter : seatLetters) {
-                seats.addLast(new Seat(i + 1, seatLetter, EClass.PREMIUM_ECONOMY));
+                seats.addLast(new Seat(row, seatLetter, EClass.PREMIUM_ECONOMY));
             }
         }
-        for (int i = 13; i < 15; i++) {
-            for (char seatLetter : seatLetters) {
-                seats.addLast(new Seat(i + 1, seatLetter, EClass.PREMIUM_ECONOMY));
-            }
-        }
+    }
+
+    public char[] getSeatLetters() {
+        return seatLetters;
+    }
+
+    public int[] getRows() {
+        return rows;
     }
 }

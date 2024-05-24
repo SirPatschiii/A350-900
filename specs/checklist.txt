@@ -1,5 +1,5 @@
 01 - DONE
-02 - 50% DONE -> Missing: toString() method
+02 - DONE
 03 - DONE
 04 -
 05 -

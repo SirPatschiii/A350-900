@@ -86,4 +86,8 @@ public class Airplane {
         sB.append("Age in days   : ").append(determineAirplaneAge()).append(lineSeparator);
         return sB.toString();
     }
+
+    public Body getBody() {
+        return body;
+    }
 }
