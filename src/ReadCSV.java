@@ -23,8 +23,8 @@ public class ReadCSV {
     private final ArrayList<String> arrival;
     private final ArrayList<String> bookingClass;
     private final ArrayList<String> seat;
-    private final ArrayList<Integer> countCheckedBaggage;
-    private final ArrayList<ArrayList<Double>> checkedBaggage;
+    private final ArrayList<Integer> amountBaggage;
+    private final ArrayList<ArrayList<Double>> weightBaggage;
     private final boolean[] warrants;
 
     private int c;
@@ -46,8 +46,8 @@ public class ReadCSV {
         arrival = new ArrayList<>();
         bookingClass = new ArrayList<>();
         seat = new ArrayList<>();
-        countCheckedBaggage = new ArrayList<>();
-        checkedBaggage = new ArrayList<>();
+        amountBaggage = new ArrayList<>();
+        weightBaggage = new ArrayList<>();
         warrants = new boolean[293];
 
         openReader();
@@ -72,14 +72,14 @@ public class ReadCSV {
         arrival.addLast(tokenArray[13]);
         bookingClass.addLast(tokenArray[14]);
         seat.addLast(tokenArray[15]);
-        countCheckedBaggage.addLast(Integer.valueOf(tokenArray[16]));
+        amountBaggage.addLast(Integer.valueOf(tokenArray[16]));
 
         String[] tempS = tokenArray[17].split(" ");
         ArrayList<Double> tempD = new ArrayList<>();
         for (String temp : tempS) {
             tempD.addLast(Double.valueOf(temp));
         }
-        checkedBaggage.addLast(tempD);
+        weightBaggage.addLast(tempD);
 
         if (tokenArray[18].equals("NO"))
             warrants[c] = false;
@@ -183,12 +183,12 @@ public class ReadCSV {
         return seat;
     }
 
-    public ArrayList<Integer> getCountCheckedBaggage() {
-        return countCheckedBaggage;
+    public ArrayList<Integer> getAmountBaggage() {
+        return amountBaggage;
     }
 
-    public ArrayList<ArrayList<Double>> getCheckedBaggage() {
-        return checkedBaggage;
+    public ArrayList<ArrayList<Double>> getWeightBaggage() {
+        return weightBaggage;
     }
 
     public boolean[] getWarrants() {
