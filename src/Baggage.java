@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Baggage {
     private final double weight;
     private final int id;

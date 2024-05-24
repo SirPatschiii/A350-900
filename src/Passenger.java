@@ -4,7 +4,7 @@ public class Passenger {
 
     public Passenger(int id) {
         this.id = id;
-        this.baggage = new Baggage(id);
+        // this.baggage = new Baggage(id);
     }
 
     public int getId() {
