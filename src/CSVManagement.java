@@ -17,6 +17,7 @@ public class CSVManagement {
     private ArrayList<String> nameList;
     private ArrayList<LocalDate> dateOfBirthList;
     private ArrayList<String> passportIdList;
+    private final boolean[] warrants;
 
     //listen erstelllen aus human name(first, last name), gender, date of birth des was bei human in konstruktor steht an den passenger liefern+id vom passport
 
@@ -32,10 +33,12 @@ public class CSVManagement {
         genderList = new ArrayList<>(readCSV.getGender());
         passportIdList = new ArrayList<>(readCSV.getPassportID());
         nameList = new ArrayList<>(readCSV.getName());
+        warrants = readCSV.getWarrants();
         passengers = new ArrayList<>();
     }
 
     public void generateBaggage() {
+        c = 0;
         for (int i = 0; i < seqList.size(); i++) {
             ArrayList<Double> weightL = weightList.removeFirst();
 
@@ -50,10 +53,12 @@ public class CSVManagement {
 
     //generate passengers
     public void generatePassengers() {
+        c = 0;
         String firstName;
         String lastName;
         EGender gender;
         LocalDate dateOfBirth;
+        boolean warrant;
 
         for (String passportID : passportIdList) {
             String[] temp = nameList.removeFirst().split(" ");
@@ -61,8 +66,10 @@ public class CSVManagement {
             lastName = temp[1];
             gender = genderList.removeFirst();
             dateOfBirth = dateOfBirthList.removeFirst();
+            warrant = warrants[c];
 
-            passengers.addLast(new Passenger(firstName, lastName, gender, dateOfBirth, 70, 175, "brown", passportID));
+            passengers.addLast(new Passenger(firstName, lastName, gender, dateOfBirth, 70, 175, "brown", passportID, warrant));
+            c++;
         }
     }
 
@@ -70,5 +77,3 @@ public class CSVManagement {
         return baggages;
     }
 }
-
-
