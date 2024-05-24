@@ -10,15 +10,13 @@ public class CSVManagement {
     private ArrayList<Integer> amountBaggageList;
     private final ArrayList<Baggage> baggages;
 
-
     private int c;
 
-    private ArrayList<EGender> gender;
-    private ArrayList<String> firstName;
-    private ArrayList<String> lastName;
-    private ArrayList<LocalDate> dateOfBirth;
-    private ArrayList<String> passportId;
-    private ArrayList<String> passengerAttributes;
+    private ArrayList<EGender> genderList;
+    private ArrayList<String> nameList;
+    private ArrayList<LocalDate> dateOfBirthList;
+    private ArrayList<String> passportIdList;
+
     //listen erstelllen aus human name(first, last name), gender, date of birth des was bei human in konstruktor steht an den passenger liefern+id vom passport
 
     public CSVManagement() {
@@ -29,12 +27,10 @@ public class CSVManagement {
         weightList = new ArrayList<>(readCSV.getWeightBaggage());
         amountBaggageList = new ArrayList<>(readCSV.getAmountBaggage());
         baggages = new ArrayList<>();
-        dateOfBirth = new ArrayList<>(readCSV.getDateOfBirth());
-        gender = new ArrayList<>(readCSV.getGender());
-        passportId = new ArrayList<>(readCSV.getPassportID());
-        firstName = new ArrayList<>(readCSV.getName());
-        lastName = new ArrayList<>(readCSV.getName());
-        passengerAttributes = new ArrayList<>(this.passengerAttributes);
+        dateOfBirthList = new ArrayList<>(readCSV.getDateOfBirth());
+        genderList = new ArrayList<>(readCSV.getGender());
+        passportIdList = new ArrayList<>(readCSV.getPassportID());
+        nameList = new ArrayList<>(readCSV.getName());
     }
 
     public void generateBaggage() {
@@ -51,16 +47,17 @@ public class CSVManagement {
     }
     //generate passengers
     public void generatePassengers(){
-        for (int i = 0;i<294;i++){
-            firstName[i].add(ownerList[i].split(" "),0);
-            lastName[i].add(ownerList[i].split(" "),1);
+        String firstName;
+        String lastName;
+        EGender gender;
+        String passportID;
+        LocalDate dateOfBirth;
 
-            ArrayList<String> passengerAttributes = passengerAttributes.add(gender.getFirst();
-            passengerAttributes[i].add(lastName[i]);
-            passengerAttributes[i].add(gender[i]);
-            passengerAttributes[i].add(dateOfBirth[i]);
-            passengerAttributes[i].add(passportId[i]);
-            ;
+        for (int i = 0;i<294;i++){
+            String[] temp = new String[2];
+            temp = nameList.removeFirst().split(" " );
+            firstName = temp[0];
+            lastName = temp[1];
         }
     }
 

@@ -1,10 +1,15 @@
-public class Passenger {
+import java.time.LocalDate;
+
+public class Passenger extends Human{
     private int id;
     private Baggage baggage;
     private CSVManagement csv;
-    public Passenger () {
-        // this.baggage = new Baggage(id);
-        Passenger passenger = new Passenger(csv.generatePassengers());
+    public Passenger (String firstName, String lastName, String gender, LocalDate dateOfBirth, double weight, double height, String hairColor) {
+        super(firstName, lastName, gender, dateOfBirth, weight, height, hairColor);
+    }
+
+    public int getId(){
+        return id;
     }
 
 

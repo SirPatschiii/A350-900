@@ -29,7 +29,7 @@ public class CheckIn {
             int id = 1;
             while ((line = br.readLine()) != null) {
                 // Assuming each line is a new passenger
-                passengers.add(new Passenger(id));
+                //passengers.add(new Passenger(id));
                 id++;
             }
         } catch (IOException e) {
