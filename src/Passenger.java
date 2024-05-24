@@ -1,15 +1,12 @@
 public class Passenger {
     private int id;
     private Baggage baggage;
-
-    public Passenger(int id) {
-        this.id = id;
+    private CSVManagement csv;
+    public Passenger () {
         // this.baggage = new Baggage(id);
+        Passenger passenger = new Passenger(csv.generatePassengers());
     }
 
-    public int getId() {
-        return id;
-    }
 
     public Baggage getBaggage() {
         return baggage;
