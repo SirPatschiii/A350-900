@@ -17,6 +17,7 @@ public class Reports {
         passengers.forEach(System.out::println);
     }
 
+    /*
     public void generateReportByClassAndName(List<Passenger> passengers) {
         passengers.sort((p1, p2) -> {
             int classComparison = p1.getTicket().getBookingClass().compareTo(p2.getTicket().getBookingClass());
@@ -31,4 +32,5 @@ public class Reports {
         });
         passengers.forEach(System.out::println);
     }
+    */
 }

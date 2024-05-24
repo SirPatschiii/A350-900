@@ -104,7 +104,8 @@ public class ReadCSV {
             while ((line = bufferedReader.readLine()) != null) {
                 String[] tokenArray = line.split(Configurator.INSTANCE.csvDelimiter);
                 storeData(tokenArray);
-                System.out.println(Arrays.toString(tokenArray));
+
+                //System.out.println(Arrays.toString(tokenArray));
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

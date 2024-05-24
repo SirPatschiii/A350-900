@@ -7,7 +7,6 @@ public class Application {
         System.out.println(airplane);
         System.out.println(airplane.getBody().getCabin().toString());
 
-        // TODO Airport stuff goes here:
         Airport airport = new Airport();
 
         // Generate baggage
@@ -24,15 +23,16 @@ public class Application {
         roboterArm.takeBaggageFromConveyorBelt();
         roboterArm.storeBaggageInContainers();
 
-
         // print Boarding Passes
-        Printer.printBoardingPass();
-
+        //Printer printer = new Printer();
+        //printer.printBoardingPass();
 
         // FederalPolice, FederalPoliceOfficer and Prison
+        // initialize prison
+        Prison prison1 = new Prison();
+
         // initialize Federal Police and Officers
         FederalPolice federalPolice = new FederalPolice();
-
 
         //initialize AutonomicVehicle
         AutonomicVehicle autonomicVehicle = new AutonomicVehicle(airportContainerStorage);
@@ -43,23 +43,10 @@ public class Application {
         // Output the state of the system
         System.out.println("Federal Police Officers: " + federalPolice.getOfficers().size());
         System.out.println("Prisons: " + federalPolice.getPrisons().size());
-        System.out.println("Organisation Unit Officers: " + OrganisationUnit.getOfficers().size());
-        System.out.println("Organisation Unit Vehicles: " + OrganisationUnit.getVehicles().size());
+        // System.out.println("Organisation Unit Officers: " + OrganisationUnit.getOfficers().size());
+        // System.out.println("Organisation Unit Vehicles: " + OrganisationUnit.getVehicles().size());
         System.out.println("Lifter initialized: " + lifter.getId());
         //made the getOfficers and getVehicles var static, means that it belongs to the class itself rather than to instances of the class.
-
-
-
-
-
-        //start Boarding Process
-        Boarding.startBoarding();
-
-        // Generate Reports after Boarding
-        Reports.generateReports(Boarding.getBoardingPasses());
-
-        // initialize prison
-        Prison prison1 = new Prison();
 
         //initialize boarding, boardingpass, printes, reports, waitingarea
         WaitingArea waitingArea = new WaitingArea();
@@ -67,17 +54,25 @@ public class Application {
         Printer printer = new Printer();
         Reports reports = new Reports();
 
+        //start Boarding Process
+        boarding.startBoarding();
+
+        // Generate Reports after Boarding
+        reports.generateReportByName(csvManagement.getPassengers());
+
+
+
+        // TODO add boarding pass vars
+        // BoardingPass boardingPass = new BoardingPass();
+
         // TODO please leave it at the end of file
         // Gets reference to the control unit from the engine
         JetEngineMediator jetEngineMediator;
         jetEngineMediator = airplane.getJetEngineMediator();
-        // TODO add boarding pass vars
-        BoardingPass boardingPass = new BoardingPass();
 
-
-
-
-
-
-}
+        // Simulate flight
+        jetEngineMediator.startUp();
+        jetEngineMediator.setSpeed(481);
+        jetEngineMediator.shutdown();
+    }
 }
