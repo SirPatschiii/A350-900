@@ -15,25 +15,25 @@ public class Boarding {
     }
 
     public void startBoarding() {
-        if (!waitingArea.isAllPassengersPresent()) {
+        /* if (!waitingArea.isAllPassengersPresent()) {
             System.out.println("Not all passengers are present in the waiting area.");
             return;
-        }
+        } */
 
         // Boarding process logic
         for (Passenger passenger : waitingArea.getPassengers()) {
             BoardingPass boardingPass = getBoardingPassForPassenger(passenger);
             if (boardingPass != null) {
-                System.out.println("Boarding passenger: " + passenger.get() + " with seat " + boardingPass.getSeat());
+                System.out.println("Boarding passenger: " + passenger.getFirstName() + " with seat " + boardingPass.getSeat());
             } else {
-                System.out.println("No boarding pass found for passenger: " + passenger.getName());
+                System.out.println("No boarding pass found for passenger: " + passenger.getFirstName());
             }
         }
     }
 
     private BoardingPass getBoardingPassForPassenger(Passenger passenger) {
         for (BoardingPass boardingPass : boardingPasses) {
-            if (boardingPass.getPassenger().equals(passenger)) {
+            if (boardingPass.getPassengerName().equals(passenger.firstName + " " + passenger.lastName)) {
                 return boardingPass;
             }
         }
