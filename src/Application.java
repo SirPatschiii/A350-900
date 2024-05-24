@@ -16,10 +16,12 @@ public class Application {
 
         // Implement baggage logistic
         ConveyorBelt conveyorBelt = new ConveyorBelt();
-        RoboterArm roboterArm = new RoboterArm(new AirportBaggageStorage(10, 10, 5), conveyorBelt);
+        AirportContainerStorage airportContainerStorage = new AirportContainerStorage();
+        RoboterArm roboterArm = new RoboterArm(new AirportBaggageStorage(10, 10, 5), conveyorBelt, airportContainerStorage);
         Weigh weigh = new Weigh(conveyorBelt, csvManagement.getBaggages());
 
         roboterArm.takeBaggageFromConveyorBelt();
+        roboterArm.storeBaggageInContainers();
 
 
 

@@ -8,6 +8,10 @@ public class Container {
         this.baggageStack = new Stack<>();
     }
 
+    public void addToStack(Baggage baggage) {
+        baggageStack.push(baggage);
+    }
+
     public boolean isEmpty() {
         return baggageStack.isEmpty();
     }
