@@ -15,7 +15,8 @@ public class AutonomicVehicle {
     //method to transport the container
     public void transportContainer() {
         //application for transporting the container
-        System.out.println("Transporting container with ID: " + container.getId());
+        // TODO uncomment line when container is implemented
+        // System.out.println("Transporting container with ID: " + container.getId());
     }
 
     public String getId() {

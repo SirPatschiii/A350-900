@@ -9,6 +9,9 @@ public class JetEngine {
     private final CombustionChamber combustionChamber;
 
     private final ESide side;
+    private boolean isRunning;
+    private final int maxRPM;
+    private int currentRPM;
 
     public JetEngine(ESide side) {
         lowPressureShaft = new LowPressureShaft();
@@ -21,5 +24,22 @@ public class JetEngine {
         combustionChamber = new CombustionChamber();
 
         this.side = side;
+        isRunning = false;
+        maxRPM = Configurator.INSTANCE.maxRPM;
+    }
+
+    public void setRunning(boolean running) {
+        isRunning = running;
+    }
+
+    public void setCurrentRPM(int currentRPM) {
+        if (currentRPM > maxRPM) {
+            throw new IllegalArgumentException("JetEngine can't turn faster than 10500 RPM!");
+        }
+        this.currentRPM = currentRPM;
+    }
+
+    public int getCurrentRPM() {
+        return currentRPM;
     }
 }
