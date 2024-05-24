@@ -6,4 +6,8 @@ public class Body {
         cabin = new Cabin();
         cargoArea = new CargoArea();
     }
+
+    public Cabin getCabin() {
+        return cabin;
+    }
 }
