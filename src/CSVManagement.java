@@ -45,17 +45,16 @@ public class CSVManagement {
             eClassList.removeFirst();
         }
     }
+
     //generate passengers
-    public void generatePassengers(){
+    public void generatePassengers() {
         String firstName;
         String lastName;
         EGender gender;
-        String passportID;
         LocalDate dateOfBirth;
 
-        for (int i = 0;i<294;i++){
-            String[] temp = new String[2];
-            temp = nameList.removeFirst().split(" " );
+        for (String passportID : passportIdList) {
+            String[] temp = nameList.removeFirst().split(" ");
             firstName = temp[0];
             lastName = temp[1];
         }
