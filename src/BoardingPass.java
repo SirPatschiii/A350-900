@@ -34,4 +34,7 @@ public class BoardingPass {
                 '}';
     }
 
+    public Object getPassenger() {
+        return getPassenger();
+    }
 }

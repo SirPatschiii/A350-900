@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 public class FederalPolice {
@@ -35,5 +36,13 @@ public class FederalPolice {
             }
         }
         return null;
+    }
+
+    public Collection<Object> getPrisons() {
+        return getPrisons();
+    }
+
+    public Collection<Object> getOfficers() {
+        return getOfficers();
     }
 }

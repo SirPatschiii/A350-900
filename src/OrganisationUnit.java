@@ -3,8 +3,8 @@ import java.util.List;
 
 public class OrganisationUnit {
     private String name; //name of the organization unit
-    private List<FederalPoliceOfficer> officers; //list of police officers in the unit
-    private List<AutonomicVehicle> vehicles; //list of autonomic vehicles in the unit
+    private static List<FederalPoliceOfficer> officers; //list of police officers in the unit
+    private static List<AutonomicVehicle> vehicles; //list of autonomic vehicles in the unit
 
     public OrganisationUnit(String name) {
         this.name = name; //starts the name
@@ -26,11 +26,11 @@ public class OrganisationUnit {
         return name; //returns the name of the unit
     }
 
-    public List<FederalPoliceOfficer> getOfficers() {
+    public static List<FederalPoliceOfficer> getOfficers() {
         return officers; //returns the list of police officers
     }
 
-    public List<AutonomicVehicle> getVehicles() {
+    public static List<AutonomicVehicle> getVehicles() {
         return vehicles; //returns the list of vehicles
     }
 }

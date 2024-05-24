@@ -1,13 +1,14 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class WaitingArea {
-    private final Queue<Passenger> queue;
+    private Queue<Passenger> passengers;
     private final CSVManagement csvManagement;
 
     public WaitingArea() {
-        this.queue = new LinkedList<>();
+        this.passengers = new LinkedList<>();
         csvManagement = new CSVManagement();
         csvManagement.generatePassengers();
     }
@@ -17,23 +18,30 @@ public class WaitingArea {
     }
 
     public void addPassenger(Passenger passenger) {
-        queue.add(passenger);
+        passengers.add(passenger);
+    }
+
+    public boolean isAllPassengersPresent() {
+        // Implement the logic to check if all expected passengers are present
+        // assume all added passengers are present
+        return !passengers.isEmpty();
     }
 
     public Passenger getNextPassenger() {
-        return queue.poll();
+        return passengers.poll();
+    }
+
+    public List<Passenger> getPassengers() {
+        return new LinkedList<>(passengers); // Return a copy of the list to avoid modification
     }
 
     public boolean isEmpty() {
-        return queue.isEmpty();
+        return passengers.isEmpty();
     }
 
 
 
-    @Override
-    public String toString() {
-        return "WaitingArea{" +
-                "queue=" + queue +
-                '}';
+    public int getCapacity() {
+        return passengers.size(); // Assuming capacity refers to the current number of passengers
     }
 }

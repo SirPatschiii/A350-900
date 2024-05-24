@@ -14,6 +14,10 @@ public class Prison {
         this.baggages = new ArrayList<>(); // starts the list of baggage
     }
 
+    public Prison() {
+
+    }
+
     public boolean hasSpace() {
         return passengers.size() < capacity; //checks if there is space available in the prison
     }
