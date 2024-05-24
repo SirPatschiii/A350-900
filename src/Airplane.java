@@ -5,6 +5,8 @@ public class Airplane {
     private final Body body;
     private final Wing wingLeft;
     private final Wing wingRight;
+    private final FuelManagement fuelManagement;
+    private final JetEngineMediator jetEngineMediator;
 
     private final EAirplaneManufacturer manufacturer;
     private final String model;
@@ -38,6 +40,8 @@ public class Airplane {
         body = new Body();
         wingLeft = new Wing(ESide.LEFT);
         wingRight = new Wing(ESide.RIGHT);
+        fuelManagement = new FuelManagement(wingLeft.getJetEngine(), wingRight.getJetEngine(), wingLeft.getFuelTank(), wingRight.getFuelTank(), body.getFuelTank());
+        jetEngineMediator = new JetEngineMediator(wingLeft.getJetEngine(), wingRight.getJetEngine(), fuelManagement);
 
         manufacturer = EAirplaneManufacturer.AIRBUS;
         model = Configurator.INSTANCE.model;
@@ -89,5 +93,13 @@ public class Airplane {
 
     public Body getBody() {
         return body;
+    }
+
+    public FuelManagement getFuelManagement() {
+        return fuelManagement;
+    }
+
+    public JetEngineMediator getJetEngineMediator() {
+        return jetEngineMediator;
     }
 }

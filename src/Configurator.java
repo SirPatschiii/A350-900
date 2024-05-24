@@ -31,4 +31,23 @@ public enum Configurator {
     public final int capacityBusinessClass = 48;
     public final int capacityPremiumEconomyClass = 21;
     public final int capacityEconomyClass = 224;
+
+    // FuelTank data
+    public final int capacityCenterTank = 82500;
+    public final int capacityWingTank = 27500;
+
+    public final String dimensionsCenterTank = "125x55x12";
+    public final String dimensionsWingTank = "125x22x10";
+
+    // JetEngine data
+    public final int maxRPM = 10500;
+
+    // Flight data
+    public final int flightTime = 13; // in hours
+
+    // Calculates miles per hours into kilometers per hours
+    public int convertMphKmh(int mph) {
+        double kmh = mph * 1.60934;
+        return (int) (Math.ceil(kmh));
+    }
 }
