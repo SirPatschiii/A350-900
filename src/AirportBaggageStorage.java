@@ -1,6 +1,7 @@
 public class AirportBaggageStorage {
     private Baggage[][][] baggageStorage;
     private int length, width,height;
+    private int nextCol, nextRow, nextHeight;
 
     public AirportBaggageStorage(int length, int width, int height) {
         this.length = length;
@@ -11,14 +12,16 @@ public class AirportBaggageStorage {
     }
 
     public void storeBaggage(Baggage baggage){
-        for(int x = 0; x < baggageStorage.length; x++){
-            for(int y = 0; y < baggageStorage[x].length; y++){
-                for(int z = 0; z < baggageStorage[x][y].length; z++){
-                    baggageStorage[x][y][z] = baggage;
-                }
-            }
-
+        baggageStorage[nextCol][nextRow][nextHeight] = baggage;
+        if(nextHeight== height -1){
+            nextRow++;
+            nextHeight = 0;
         }
+        if(nextRow == width -1){
+            nextCol++;
+            nextRow = 0;
+        }
+        nextHeight++;
     }
 
     public int getLength() {
