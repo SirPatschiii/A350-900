@@ -50,4 +50,10 @@ public enum Configurator {
         double kmh = mph * 1.60934;
         return (int) (Math.ceil(kmh));
     }
+
+    // File path to .csv
+    public final String pathCSV = "./specs/data.csv";
+
+    // CSV delimiter
+    public final String csvDelimiter = ",";
 }
