@@ -24,6 +24,10 @@ public class AirportBaggageStorage {
         nextHeight++;
     }
 
+    public Baggage[][][] getBaggageStorage() {
+        return baggageStorage;
+    }
+
     public int getLength() {
 
         return length;
