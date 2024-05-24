@@ -21,7 +21,7 @@ public class ReadCSV {
     private final ArrayList<String> to;
     private final ArrayList<String> departure;
     private final ArrayList<String> arrival;
-    private final ArrayList<String> bookingClass;
+    private final ArrayList<EClass> bookingClass;
     private final ArrayList<String> seat;
     private final ArrayList<Integer> amountBaggage;
     private final ArrayList<ArrayList<Double>> weightBaggage;
@@ -70,7 +70,7 @@ public class ReadCSV {
         to.addLast(tokenArray[11]);
         departure.addLast(tokenArray[12]);
         arrival.addLast(tokenArray[13]);
-        bookingClass.addLast(tokenArray[14]);
+        bookingClass.addLast(EClass.valueOf(tokenArray[14]));
         seat.addLast(tokenArray[15]);
         amountBaggage.addLast(Integer.valueOf(tokenArray[16]));
 
@@ -175,7 +175,7 @@ public class ReadCSV {
         return arrival;
     }
 
-    public ArrayList<String> getBookingClass() {
+    public ArrayList<EClass> getBookingClass() {
         return bookingClass;
     }
 
