@@ -50,11 +50,4 @@ public class CheckIn {
             }
         } while (!allQueuesEmpty);
     }
-
-    public static void main(String[] args) {
-        CheckIn checkIn = new CheckIn(10);
-        List<Passenger> passengers = checkIn.readPassengersFromCSV("/mnt/data/data.csv");
-        checkIn.initializePassengers(passengers);
-        checkIn.startCheckInProcess();
-    }
 }
