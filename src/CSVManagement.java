@@ -76,4 +76,9 @@ public class CSVManagement {
     public ArrayList<Baggage> getBaggages() {
         return baggages;
     }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
+    }
+
 }
