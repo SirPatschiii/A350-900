@@ -9,4 +9,5 @@ public class Baggage {
     public double getWeight() {
         return weight;
     }
+
 }
