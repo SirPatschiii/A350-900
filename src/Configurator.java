@@ -5,6 +5,13 @@ public enum Configurator {
 
     // General data
     public final String lineSeparator = System.lineSeparator();
+    public final String fileSeparator = System.getProperty("file.separator");
+    public final String userDirectory = System.getProperty("user.dir");
+
+    public final String reportFile1 = userDirectory + fileSeparator + "report" + fileSeparator + "report01.txt";
+    public final String reportFile2 = userDirectory + fileSeparator + "report" + fileSeparator + "report02.txt";
+    public final String reportFile3 = userDirectory + fileSeparator + "report" + fileSeparator + "report03.txt";
+
     public final LocalDate currentDate = LocalDate.now();
 
     // Airplane data
