@@ -18,5 +18,7 @@ public class Application {
         jetEngineMediator.startUp();
         jetEngineMediator.setSpeed(481);
         jetEngineMediator.shutdown();
+
+        Reports reports = new Reports(airplane);
     }
 }

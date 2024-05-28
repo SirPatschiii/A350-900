@@ -91,7 +91,7 @@ public class CheckInDesk {
             flight = tempTicket.getFlight();
             seat = tempTicket.getSeat();
             eClass = tempTicket.getBookingClass();
-            BoardingPass boardingPass = new BoardingPass(passenger.firstName + " " + passenger.lastName, flight, seat, eClass);
+            BoardingPass boardingPass = new BoardingPass(passenger.firstName + " " + passenger.lastName, passenger.firstName, passenger.lastName, flight, seat, eClass);
             passenger.setBoardingPass(boardingPass);
             printer.printBoardingPass(boardingPass);
         }

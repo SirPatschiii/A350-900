@@ -7,9 +7,13 @@ public enum LogEngine {
 
     public BufferedWriter bufferedWriter;
 
-    public void init() {
+    public void init(int index) {
         try {
-            bufferedWriter = new BufferedWriter(new FileWriter(Configurator.INSTANCE.reportFile1));
+            switch (index) {
+                case 0 -> bufferedWriter = new BufferedWriter(new FileWriter(Configurator.INSTANCE.reportFile1));
+                case 1 -> bufferedWriter = new BufferedWriter(new FileWriter(Configurator.INSTANCE.reportFile2));
+                case 2 -> bufferedWriter = new BufferedWriter(new FileWriter(Configurator.INSTANCE.reportFile3));
+            }
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

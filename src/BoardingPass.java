@@ -1,13 +1,15 @@
-//Informationen, die auf dem BoardingPass angezeigt werden
-
 public class BoardingPass {
     private final String passengerName;
+    private final String firstName;
+    private final String lastName;
     private final String flight;
     private final String seat;
     private final EClass eClass;
 
-    public BoardingPass(String passengerName, String flight, String seat, EClass eClass) {
+    public BoardingPass(String passengerName, String firstName, String lastName, String flight, String seat, EClass eClass) {
         this.passengerName = passengerName;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.flight = flight;
         this.seat = seat;
         this.eClass = eClass;
@@ -15,6 +17,14 @@ public class BoardingPass {
 
     public String getPassengerName() {
         return passengerName;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
     }
 
     public String getFlight() {
@@ -31,11 +41,7 @@ public class BoardingPass {
 
     @Override
     public String toString() {
-        return "BoardingPass{" +
-                "passengerName='" + passengerName + '\'' +
-                ", flight='" + flight + '\'' +
-                ", seat='" + seat + '\'' +
-                '}';
+        return "BoardingPass: " + lastName + " " + firstName + "; " + "Class: " + eClass + "; Seat: " + seat;
     }
 
     public Object getPassenger() {
