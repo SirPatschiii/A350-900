@@ -25,6 +25,27 @@ public class Application {
         roboterArm.takeBaggageFromConveyorBelt();
         roboterArm.storeBaggageInContainers();
 
+        // initialize Lifter
+        Lifter lifter = new Lifter("Lifter");
+
+        //initialize AutonomicVehicle
+        AutonomicVehicle autonomicVehicle1 = new AutonomicVehicle(airportContainerStorage, lifter, airplane.getBody().getCargoArea());
+        AutonomicVehicle autonomicVehicle2 = new AutonomicVehicle(airportContainerStorage, lifter, airplane.getBody().getCargoArea());
+        AutonomicVehicle autonomicVehicle3 = new AutonomicVehicle(airportContainerStorage, lifter, airplane.getBody().getCargoArea());
+
+        autonomicVehicle1.loadContainer(airportContainerStorage.getContainer1());
+        autonomicVehicle1.loadContainer(airportContainerStorage.getContainer2());
+        autonomicVehicle1.loadContainer(airportContainerStorage.getContainer3());
+
+        autonomicVehicle2.loadContainer(airportContainerStorage.getContainer4());
+        autonomicVehicle2.loadContainer(airportContainerStorage.getContainer5());
+        autonomicVehicle2.loadContainer(airportContainerStorage.getContainer6());
+
+        autonomicVehicle3.loadContainer(airportContainerStorage.getContainer7());
+        autonomicVehicle3.loadContainer(airportContainerStorage.getContainer8());
+
+
+
         // print Boarding Passes
         //Printer printer = new Printer();
         //printer.printBoardingPass();
@@ -35,12 +56,6 @@ public class Application {
 
         // initialize Federal Police and Officers
         FederalPolice federalPolice = new FederalPolice();
-
-        //initialize AutonomicVehicle
-        AutonomicVehicle autonomicVehicle = new AutonomicVehicle(airportContainerStorage);
-
-        // initialize Lifter
-        Lifter lifter = new Lifter("Lifter");
 
         // Output the state of the system
         System.out.println("Federal Police Officers: " + federalPolice.getOfficers().size());

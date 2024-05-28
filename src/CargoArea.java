@@ -3,8 +3,8 @@ import java.util.ArrayList;
 public class CargoArea {
     private final ArrayList<Container> storageAreaAirplaneLeft;
     private final ArrayList<Container> storageAreaAirplaneRight;
-    private int weightLeft; // in kilograms
-    private int weightRight; // in kilograms
+    private double weightLeft; // in kilograms
+    private double weightRight; // in kilograms
 
     public CargoArea() {
         storageAreaAirplaneLeft = new ArrayList<>();
@@ -12,9 +12,14 @@ public class CargoArea {
     }
 
     private void calculateCargoAreaWeight() {
-        // TODO calculate weight of left and right compartment
         weightLeft = 0;
         weightRight = 0;
+        for (Container container : storageAreaAirplaneLeft) {
+            weightLeft += container.getWeight();
+        }
+        for (Container container : storageAreaAirplaneRight) {
+            weightRight += container.getWeight();
+        }
     }
 
     /**

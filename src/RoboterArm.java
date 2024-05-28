@@ -49,26 +49,34 @@ public class RoboterArm {
         for (int i = 0; i < 38; i++) {
             container1.addToStack(baggageStack.pop());
         }
+        container1.calcWeight();
         for (int i = 0; i < 38; i++) {
             container2.addToStack(baggageStack.pop());
         }
+        container2.calcWeight();
         for (int i = 0; i < 38; i++) {
             container3.addToStack(baggageStack.pop());
         }
+        container3.calcWeight();
         for (int i = 0; i < 38; i++) {
             container4.addToStack(baggageStack.pop());
         }
+        container4.calcWeight();
         for (int i = 0; i < 38; i++) {
             container5.addToStack(baggageStack.pop());
         }
+        container5.calcWeight();
         for (int i = 0; i < 39; i++) {
             container6.addToStack(baggageStack.pop());
         }
+        container6.calcWeight();
         for (int i = 0; i < 39; i++) {
             container7.addToStack(baggageStack.pop());
         }
+        container7.calcWeight();
         for (int i = 0; i < 39; i++) {
             container8.addToStack(baggageStack.pop());
         }
+        container8.calcWeight();
     }
 }
