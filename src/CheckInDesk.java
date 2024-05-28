@@ -1,57 +1,105 @@
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Random;
+import java.util.*;
 
 public class CheckInDesk {
-    private int id;
-    Queue<Passenger> queue;
-    private static final int MAX_CAPACITY = 30;
-    private Reader passportReader;
-    private Reader irisReader;
-    private Reader fingerPrintReader;
-    private String conveyorBelt = "ConveyorBelt";
-    private String printer = "Printer";
+    private final CSVManagement csvManagement;
 
-    public CheckInDesk(int id) {
-        this.id = id;
-        this.queue = new LinkedList<>();
-        this.passportReader = new PassportReader();
-        this.irisReader = new IrisReader();
-        this.fingerPrintReader = new FingerPrintReader();
+    private final Queue<Passenger> passengerQueue;
+    private final ReaderIris readerIris;
+    private final ReaderFingerprint readerFingerprint;
+    private final ReaderPassport readerPassport;
+    private final Printer printer;
+
+    ArrayList<Baggage> baggages;
+
+    public CheckInDesk(CSVManagement csvManagement) {
+        this.csvManagement = csvManagement;
+
+        passengerQueue = new LinkedList<>();
+        readerIris = new ReaderIris(csvManagement);
+        readerFingerprint = new ReaderFingerprint(csvManagement);
+        readerPassport = new ReaderPassport(csvManagement);
+        printer = new Printer();
+
+        baggages = csvManagement.getBaggages();
     }
 
-    public void enqueuePassenger(Passenger passenger) {
-        if (queue.size() < MAX_CAPACITY) {
-            queue.add(passenger);
-            System.out.println("Passenger " + passenger.getId() + " added to queue at Desk " + id);
-        } else {
-            System.out.println("Queue at Desk " + id + " is full. Passenger " + passenger.getId() + " cannot be added.");
+    public void appendPassanger(Passenger passenger) {
+        passengerQueue.add(passenger);
+    }
+
+    public void authenticatePassangers(ArrayList<Passport> passports) {
+        Random r = new Random();
+        int temp;
+
+        for (Passenger passenger : passengerQueue) {
+            temp = r.nextInt(0, 2);
+            switch (temp) {
+                case 0 -> {
+                    readerIris.authenticate(passenger.getHead().getIris());
+                }
+                case 1 -> {
+                    readerFingerprint.authenticate(passenger.getLeftArm().getHand().getFingerprint());
+                }
+                case 2 -> {
+                    readerPassport.authenticate(passports, passenger);
+                }
+                default -> throw new IllegalArgumentException("Wrong random value!");
+            }
         }
     }
 
-    public void authenticatePassenger(Passenger passenger) {
-        Random random = new Random();
-        int choice = random.nextInt(3);
-        switch (choice) {
-            case 0:
-                passportReader.authenticate(passenger);
-                break;
-            case 1:
-                irisReader.authenticate(passenger);
-                break;
-            case 2:
-                fingerPrintReader.authenticate(passenger);
-                break;
+    public void searchForWarrant(FederalPoliceOfficer federalPoliceOfficer) {
+        Stack<Baggage> bagStack = new Stack<>();
+        Stack<Passenger> pasStack = new Stack<>();
+        for (Passenger passenger : passengerQueue) {
+            if (passenger.isWarrant()) {
+                for (Baggage baggage : baggages) {
+                    if (baggage.getOwner().equals(passenger.firstName + " " + passenger.lastName)) {
+                        federalPoliceOfficer.arrestPassenger(passenger, baggage);
+                        bagStack.push(baggage);
+                    }
+                }
+                pasStack.push(passenger);
+            }
+        }
+        for (Baggage baggage : bagStack) {
+            baggages.remove(baggage);
+        }
+        for (Passenger passenger : pasStack) {
+            passengerQueue.remove(passenger);
         }
     }
 
-    public void processPassenger() {
-        if (!queue.isEmpty()) {
-            Passenger passenger = queue.poll();
-            authenticatePassenger(passenger);
-            System.out.println("Passenger " + passenger.getId() + " is processed at Desk " + id + " using " + conveyorBelt + " and " + printer);
-        } else {
-            System.out.println("No passengers in queue at Desk " + id);
+    public void lineupBaggages(Weigh weigh) {
+        for (Passenger passenger : passengerQueue) {
+            for (Baggage baggage : csvManagement.getBaggages()) {
+                if (baggage.getOwner().equals(passenger.firstName + " " + passenger.lastName)) {
+                    weigh.addBaggage(baggage);
+                }
+            }
+        }
+    }
+
+    public void printBoardingPass() {
+        HashMap<Passenger, Ticket> passTickMap = csvManagement.getPassengerTicketHashMap();
+        Ticket tempTicket;
+        String flight;
+        String seat;
+        EClass eClass;
+        for (Passenger passenger : passengerQueue) {
+            tempTicket = passTickMap.get(passenger);
+            flight = tempTicket.getFlight();
+            seat = tempTicket.getSeat();
+            eClass = tempTicket.getBookingClass();
+            BoardingPass boardingPass = new BoardingPass(passenger.firstName + " " + passenger.lastName, flight, seat, eClass);
+            passenger.setBoardingPass(boardingPass);
+            printer.printBoardingPass(boardingPass);
+        }
+    }
+
+    public void sendPassangerToWaitingArea(WaitingArea waitingArea) {
+        for (Passenger passenger : passengerQueue) {
+            waitingArea.addPassanger(passenger);
         }
     }
 }

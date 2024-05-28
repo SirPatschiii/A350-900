@@ -1,24 +1,15 @@
+import java.util.ArrayList;
+
 public abstract class Reader {
-    public abstract void authenticate(Passenger passenger);
-}
+    public Reader() {
 
-class PassportReader extends Reader {
-    @Override
-    public void authenticate(Passenger passenger) {
-        System.out.println("Passenger " + passenger.getId() + " authenticates with Passport.");
     }
-}
 
-class IrisReader extends Reader {
-    @Override
-    public void authenticate(Passenger passenger) {
-        System.out.println("Passenger " + passenger.getId() + " authenticates with Iris.");
+    protected boolean authenticate(String ident) {
+        return false;
     }
-}
 
-class FingerPrintReader extends Reader {
-    @Override
-    public void authenticate(Passenger passenger) {
-        System.out.println("Passenger " + passenger.getId() + " authenticates with FingerPrint.");
+    protected boolean authenticate(ArrayList<Passport> passports, Passenger passenger) {
+        return false;
     }
 }

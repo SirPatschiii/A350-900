@@ -1,44 +1,25 @@
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.Random;
 
 public class WaitingArea {
-    private Queue<Passenger> passengers;
-    private final CSVManagement csvManagement;
+    private Passenger[][] passengerWaitingArea;
 
     public WaitingArea() {
-        this.passengers = new LinkedList<>();
-        csvManagement = new CSVManagement();
-        csvManagement.generatePassengers();
+        passengerWaitingArea = new Passenger[20][30];
     }
 
-    public ArrayList<Passenger> getPassengers() {
-        return csvManagement.getPassengers();
+    public void addPassanger(Passenger passenger) {
+        Random r = new Random();
+        int x1;
+        int x2;
+        do {
+            x1 = r.nextInt(0, 19);
+            x2 = r.nextInt(0, 29);
+        } while (passengerWaitingArea[x1][x2] != null);
+
+        passengerWaitingArea[x1][x2] = passenger;
     }
 
-    public void addPassenger(Passenger passenger) {
-        passengers.add(passenger);
-    }
-
-    public boolean isAllPassengersPresent() {
-        // Implement the logic to check if all expected passengers are present
-        // assume all added passengers are present
-        return !passengers.isEmpty();
-    }
-
-    public Passenger getNextPassenger() {
-        return passengers.poll();
-    }
-
-
-    public boolean isEmpty() {
-        return passengers.isEmpty();
-    }
-
-
-
-    public int getCapacity() {
-        return passengers.size(); // Assuming capacity refers to the current number of passengers
+    public Passenger[][] getPassengerWaitingArea() {
+        return passengerWaitingArea;
     }
 }

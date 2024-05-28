@@ -11,6 +11,18 @@ public class Cabin {
         economyClass = new Economy();
     }
 
+    public Business getBusinessClass() {
+        return businessClass;
+    }
+
+    public PremiumEconomy getPremiumEconomyClass() {
+        return premiumEconomyClass;
+    }
+
+    public Economy getEconomyClass() {
+        return economyClass;
+    }
+
     @Override
     public String toString() {
         String lineSeparator = Configurator.INSTANCE.lineSeparator;

@@ -1,8 +1,10 @@
 public class Head {
     private String hairColor;
+    private final String iris;
 
-    public Head(String hairColor) {
+    public Head(String hairColor, String iris) {
         this.hairColor = hairColor;
+        this.iris = iris;
     }
 
     public String getHaircolor() {
@@ -11,6 +13,10 @@ public class Head {
 
     public void setHaircolor(String hairColor) {
         this.hairColor = hairColor;
+    }
+
+    public String getIris() {
+        return iris;
     }
 
     @Override

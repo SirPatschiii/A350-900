@@ -8,16 +8,21 @@ public class FederalPolice {
     public FederalPolice() {
         officers = new ArrayList<>(); //starts the list of police officers
         prisons = new ArrayList<>(); // starts the list of prisons
+        addOfficer(new FederalPoliceOfficer("Sheriff", 110, this));
+        addPrison(new Prison("Alcatraz", 1000));
     }
-// method to add a police officer
+
+    // method to add a police officer
     public void addOfficer(FederalPoliceOfficer officer) {
         officers.add(officer);
     }
-// method to add a prison
+
+    // method to add a prison
     public void addPrison(Prison prison) {
         prisons.add(prison);
     }
-//method to arrest a passenger
+
+    //method to arrest a passenger
     public void arrestPassenger(Passenger passenger, Baggage baggage) {
         // Implementation for arresting a passenger
         Prison prison = findAvailablePrison(); //finds an available prison
@@ -27,7 +32,8 @@ public class FederalPolice {
             System.out.println("No available prison space for the passenger."); //quick report if space is not available
         }
     }
-//again method to find an available prison
+
+    //again method to find an available prison
     private Prison findAvailablePrison() {
         for (Prison prison : prisons) {
             if (prison.hasSpace()) {

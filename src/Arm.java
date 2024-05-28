@@ -2,9 +2,9 @@ public class Arm {
     private ESide armSide;
     private Hand hand;
 
-    public Arm(ESide eside) {
+    public Arm(ESide eside, String fingerprint) {
         this.armSide = eside;
-        this.hand = new Hand(armSide);
+        this.hand = new Hand(armSide, fingerprint);
     }
 
 
@@ -14,6 +14,10 @@ public class Arm {
 
     public void setEside(ESide eside) {
         this.armSide = eside;
+    }
+
+    public Hand getHand() {
+        return hand;
     }
 
     @Override

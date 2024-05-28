@@ -1,46 +1,61 @@
 import java.util.ArrayList;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Boarding {
     private final WaitingArea waitingArea;
-    private final List<BoardingPass> boardingPasses;
+    private final Queue<Passenger> passengersBusiness;
+    private final Queue<Passenger> passengersPremiumEconomy;
+    private final Queue<Passenger> passengersEconomy;
 
     public Boarding(WaitingArea waitingArea) {
-        this.waitingArea = waitingArea;  // Correct assignment
-        this.boardingPasses = new ArrayList<>();
+        this.waitingArea = waitingArea;
+        passengersBusiness = new LinkedList<>();
+        passengersPremiumEconomy = new LinkedList<>();
+        passengersEconomy = new LinkedList<>();
     }
 
-    public void addBoardingPass(BoardingPass boardingPass) {
-        boardingPasses.add(boardingPass);
-    }
-
-    public void startBoarding() {
-        /* if (!waitingArea.isAllPassengersPresent()) {
-            System.out.println("Not all passengers are present in the waiting area.");
-            return;
-        } */
-
-        // Boarding process logic
-        for (Passenger passenger : waitingArea.getPassengers()) {
-            BoardingPass boardingPass = getBoardingPassForPassenger(passenger);
-            if (boardingPass != null) {
-                System.out.println("Boarding passenger: " + passenger.getFirstName() + " with seat " + boardingPass.getSeat());
-            } else {
-                System.out.println("No boarding pass found for passenger: " + passenger.getFirstName());
+    public void startBoarding(Cabin cabin) {
+        Passenger[][] passengerWaitingArea = waitingArea.getPassengerWaitingArea();
+        for (int i = 0; i < 20; i++) {
+            for (int j = 0; j < 30; j++) {
+                Passenger tempPassanger = passengerWaitingArea[i][j];
+                if (tempPassanger != null) {
+                    switch (tempPassanger.getBoardingPass().getEClass()) {
+                        case BUSINESS -> passengersBusiness.add(tempPassanger);
+                        case PREMIUM_ECONOMY -> passengersPremiumEconomy.add(tempPassanger);
+                        case ECONOMY -> passengersEconomy.add(tempPassanger);
+                    }
+                }
             }
         }
-    }
 
-    private BoardingPass getBoardingPassForPassenger(Passenger passenger) {
-        for (BoardingPass boardingPass : boardingPasses) {
-            if (boardingPass.getPassengerName().equals(passenger.firstName + " " + passenger.lastName)) {
-                return boardingPass;
+        ArrayList<Seat> businessSeats = cabin.getBusinessClass().getSeats();
+        ArrayList<Seat> premiumEconomySeats = cabin.getPremiumEconomyClass().getSeats();
+        ArrayList<Seat> economySeats = cabin.getEconomyClass().getSeats();
+
+        for (Passenger passenger : passengersBusiness) {
+            for (Seat seat : businessSeats) {
+                if (seat.getSeatDescription().equals(passenger.getBoardingPass().getSeat())) {
+                    seat.setPassenger(passenger);
+                }
             }
         }
-        return null;
-    }
 
-    public List<BoardingPass> getBoardingPasses() {
-        return boardingPasses;
+        for (Passenger passenger : passengersPremiumEconomy) {
+            for (Seat seat : premiumEconomySeats) {
+                if (seat.getSeatDescription().equals(passenger.getBoardingPass().getSeat())) {
+                    seat.setPassenger(passenger);
+                }
+            }
+        }
+
+        for (Passenger passenger : passengersEconomy) {
+            for (Seat seat : economySeats) {
+                if (seat.getSeatDescription().equals(passenger.getBoardingPass().getSeat())) {
+                    seat.setPassenger(passenger);
+                }
+            }
+        }
     }
 }

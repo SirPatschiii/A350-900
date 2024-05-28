@@ -70,12 +70,12 @@ public class RoboterArm {
             container6.addToStack(baggageStack.pop());
         }
         container6.calcWeight();
-        for (int i = 0; i < 39; i++) {
+        for (int i = 0; i < 37; i++) {
             container7.addToStack(baggageStack.pop());
         }
         container7.calcWeight();
-        for (int i = 0; i < 39; i++) {
-            container8.addToStack(baggageStack.pop());
+        for (Baggage baggage : baggageStack) {
+            container8.addToStack(baggage);
         }
         container8.calcWeight();
     }

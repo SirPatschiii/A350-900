@@ -17,11 +17,11 @@ public abstract class Human {
     protected double height;
     protected String hairColor;
 
-    public Human(String firstName, String lastName, EGender gender, LocalDate dateOfBirth, double weight, double height,String hairColor) {
-        this.head = new Head(hairColor);
+    public Human(String firstName, String lastName, EGender gender, LocalDate dateOfBirth, double weight, double height,String hairColor, String fingerprint, String iris) {
+        this.head = new Head(hairColor, iris);
         this.humanBody = new HumanBody(weight, height);
-        this.leftArm = new Arm(ESide.LEFT);
-        this.rightArm = new Arm(ESide.RIGHT);
+        this.leftArm = new Arm(ESide.LEFT, fingerprint);
+        this.rightArm = new Arm(ESide.RIGHT, fingerprint);
         this.leftLeg = new Leg(ESide.LEFT);
         this.rightLeg = new Leg(ESide.RIGHT);
 

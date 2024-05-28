@@ -1,8 +1,6 @@
-// Informationen des Tickets und des BoardingPasses
-
 public class Printer {
-    public void printTicket(Ticket ticket) {
-        System.out.println(ticket);
+    public Printer() {
+
     }
 
     public void printBoardingPass(BoardingPass boardingPass) {

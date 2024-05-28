@@ -1,53 +1,57 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 public class CheckIn {
     private CheckInDesk[] checkInDesks;
+    private final ArrayList<Passenger> passengers;
 
-    public CheckIn(int numDesks) {
-        checkInDesks = new CheckInDesk[numDesks];
-        for (int i = 0; i < numDesks; i++) {
-            checkInDesks[i] = new CheckInDesk(i + 1);
+    public CheckIn(CSVManagement csvManagement, ArrayList<Passenger> passengers) {
+        checkInDesks = new CheckInDesk[10];
+        initDesks(csvManagement);
+        this.passengers = passengers;
+    }
+
+    private void initDesks(CSVManagement csvManagement) {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i] = (new CheckInDesk(csvManagement));
         }
     }
 
-    public void initializePassengers(List<Passenger> passengers) {
-        int deskIndex = 0;
+    public void lineupPassangers() {
+        int c = 0;
+
         for (Passenger passenger : passengers) {
-            checkInDesks[deskIndex].enqueuePassenger(passenger);
-            deskIndex = (deskIndex + 1) % checkInDesks.length;
+            checkInDesks[c % 10].appendPassanger(passenger);
+            c++;
         }
     }
 
-    public List<Passenger> readPassengersFromCSV(String filePath) {
-        List<Passenger> passengers = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            String line;
-            int id = 1;
-            while ((line = br.readLine()) != null) {
-                // Assuming each line is a new passenger
-                //passengers.add(new Passenger(id));
-                id++;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+    public void authenticatePassangers(ArrayList<Passport> passports) {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i].authenticatePassangers(passports);
         }
-        return passengers;
     }
 
-    public void startCheckInProcess() {
-        boolean allQueuesEmpty;
-        do {
-            allQueuesEmpty = true;
-            for (CheckInDesk desk : checkInDesks) {
-                if (!desk.queue.isEmpty()) {
-                    desk.processPassenger();
-                    allQueuesEmpty = false;
-                }
-            }
-        } while (!allQueuesEmpty);
+    public void searchForWarrant(FederalPoliceOfficer federalPoliceOfficer) {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i].searchForWarrant(federalPoliceOfficer);
+        }
+    }
+
+    public void lineupBaggages(Weigh weigh) {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i].lineupBaggages(weigh);
+        }
+    }
+
+    public void printBoardingPass() {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i].printBoardingPass();
+        }
+    }
+
+    public void sendPassangerToWaitingArea(WaitingArea waitingArea) {
+        for (int i = 0; i < 10; i++) {
+            checkInDesks[i].sendPassangerToWaitingArea(waitingArea);
+        }
     }
 }
