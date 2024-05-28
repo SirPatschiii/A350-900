@@ -11,8 +11,10 @@ public class Application {
 
         // Generate baggage
         CSVManagement csvManagement = new CSVManagement();
+        csvManagement.generateTickets();
         csvManagement.generateBaggage();
         csvManagement.generatePassengers();
+
 
         // Implement baggage logistic
         ConveyorBelt conveyorBelt = new ConveyorBelt();

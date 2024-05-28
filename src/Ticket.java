@@ -8,10 +8,10 @@ public class Ticket {
     private final String to;
     private final String departure;
     private final String arrival;
-    private final String bookingClass;
+    private final EClass bookingClass;
     private final String seat;
 
-    public Ticket(String bookingID, String flight, String from, String to, String departure, String arrival, String bookingClass, String seat) {
+    public Ticket(String bookingID, String flight, String from, String to, String departure, String arrival, EClass bookingClass, String seat) {
         this.uuid = UUID.randomUUID();
         this.bookingID = bookingID;
         this.flight = flight;
@@ -51,7 +51,7 @@ public class Ticket {
         return arrival;
     }
 
-    public String getBookingClass() {
+    public EClass getBookingClass() {
         return bookingClass;
     }
 

@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class CSVManagement {
     private ReadCSV readCSV;
@@ -18,8 +19,8 @@ public class CSVManagement {
     private ArrayList<LocalDate> dateOfBirthList;
     private ArrayList<String> passportIdList;
     private final boolean[] warrants;
-
-    //listen erstelllen aus human name(first, last name), gender, date of birth des was bei human in konstruktor steht an den passenger liefern+id vom passport
+    private final ArrayList<String> bookingIDList;
+    private TreeMap<String,Ticket> tickets;
 
     public CSVManagement() {
         readCSV = new ReadCSV();
@@ -35,6 +36,8 @@ public class CSVManagement {
         nameList = new ArrayList<>(readCSV.getName());
         warrants = readCSV.getWarrants();
         passengers = new ArrayList<>();
+        bookingIDList = new ArrayList<>(readCSV.getBookingID());
+        tickets = new TreeMap<>();
     }
 
     public void generateBaggage() {
@@ -73,6 +76,28 @@ public class CSVManagement {
         }
     }
 
+    public void generateTickets(){
+        ArrayList<String> flightList = readCSV.getFlight();
+        ArrayList<String> fromList = readCSV.getFrom();
+        ArrayList<String> toList = readCSV.getTo();
+        ArrayList<String> departureList = readCSV.getDeparture();
+        ArrayList<String> arrivalList = readCSV.getArrival();
+        ArrayList<EClass> bookingClassList = readCSV.getBookingClass();
+        ArrayList<String> seatList = readCSV.getSeat();
+
+        for (String bookingID : bookingIDList) {
+            String flight = flightList.removeFirst();
+            String from = fromList.removeFirst();
+            String to = toList.removeFirst();
+            String departure = departureList.removeFirst();
+            String arrival =  arrivalList.removeFirst();
+            EClass bookingClass = bookingClassList.removeFirst();
+            String seat = seatList.removeFirst();
+
+            tickets.put(bookingID, new Ticket(bookingID, flight, from, to, departure, arrival, bookingClass,seat));
+        }
+
+    }
     public ArrayList<Baggage> getBaggages() {
         return baggages;
     }
