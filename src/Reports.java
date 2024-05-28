@@ -1,4 +1,3 @@
-
 public class Reports {
 
     private LogEngine logEngine;
