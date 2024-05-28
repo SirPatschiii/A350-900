@@ -25,7 +25,7 @@ public class FuelManagement {
 
         for (int i = 0; i < Configurator.INSTANCE.flightTime; i++) {
             rpmLeft = jetEngineLeft.getCurrentRPM();
-            rpmRight = jetEngineLeft.getCurrentRPM();
+            rpmRight = jetEngineRight.getCurrentRPM();
             fuelConsumptionLeftEngine = (double) (rpmLeft / 2); // in l
             fuelConsumptionRightEngine = (double) (rpmRight / 2); // in l
 

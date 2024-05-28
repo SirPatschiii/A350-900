@@ -13,6 +13,10 @@ public class Body {
         return cabin;
     }
 
+    public CargoArea getCargoArea() {
+        return cargoArea;
+    }
+
     public FuelTank getFuelTank() {
         return fuelTank;
     }
