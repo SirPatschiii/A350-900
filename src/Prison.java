@@ -26,12 +26,4 @@ public class Prison {
             System.out.println("No space available in this prison."); //quick report if no space is available
         }
     }
-
-    public String getLocation() {
-        return location; //returns the location of the prison
-    }
-
-    public int getCapacity() {
-        return capacity; //returns the capacity of the prison
-    }
 }

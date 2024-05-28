@@ -7,13 +7,6 @@ public class Leg {
         this.foot = new Foot(legSide);
     }
 
-    public ESide getLegSide() {
-        return legSide;
-    }
-
-    public void setLegSide(ESide legSide) {
-        this.legSide = legSide;
-    }
     @Override
     public String toString() {
         return "Leg{" + "side='" + legSide + '\'' + '}';

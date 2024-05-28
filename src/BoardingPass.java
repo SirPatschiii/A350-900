@@ -15,22 +15,6 @@ public class BoardingPass {
         this.eClass = eClass;
     }
 
-    public String getPassengerName() {
-        return passengerName;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getFlight() {
-        return flight;
-    }
-
     public String getSeat() {
         return seat;
     }

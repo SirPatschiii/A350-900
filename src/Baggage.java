@@ -15,14 +15,6 @@ public class Baggage {
         return weight;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public EClass geteClass() {
-        return eClass;
-    }
-
     public String getOwner() {
         return owner;
     }

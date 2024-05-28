@@ -123,10 +123,6 @@ public class ReadCSV {
         return seq;
     }
 
-    public ArrayList<String> getRole() {
-        return role;
-    }
-
     public ArrayList<String> getName() {
         return name;
     }

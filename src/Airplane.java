@@ -95,10 +95,6 @@ public class Airplane {
         return body;
     }
 
-    public FuelManagement getFuelManagement() {
-        return fuelManagement;
-    }
-
     public JetEngineMediator getJetEngineMediator() {
         return jetEngineMediator;
     }

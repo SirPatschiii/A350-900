@@ -16,14 +16,6 @@ public class Container {
         baggageStack.push(baggage);
     }
 
-    public boolean isEmpty() {
-        return baggageStack.isEmpty();
-    }
-
-    public boolean isFull() {
-        return baggageStack.size() == maxCapacity;
-    }
-
     public void calcWeight() {
         Stack<Baggage> bS = (Stack<Baggage>) baggageStack.clone();
         for (Baggage baggage : bS) {

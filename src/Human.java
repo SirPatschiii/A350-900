@@ -31,69 +31,12 @@ public abstract class Human {
         this.dateOfBirth = dateOfBirth;
     }
 
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public EGender getGender() {
-        return gender;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
     public Head getHead() {
         return head;
     }
 
-    public void setHead(Head head) {
-        this.head = head;
-    }
-
-    public HumanBody getHumanBody() {
-        return humanBody;
-    }
-
-    public void setHumanBody(HumanBody humanBody) {
-        this.humanBody = humanBody;
-    }
-
     public Arm getLeftArm() {
         return leftArm;
-    }
-
-    public void setLeftArm(Arm leftArm) {
-        this.leftArm = leftArm;
-    }
-
-    public Arm getRightArm() {
-        return rightArm;
-    }
-
-    public void setRightArm(Arm rightArm) {
-        this.rightArm = rightArm;
-    }
-
-    public Leg getLeftLeg() {
-        return leftLeg;
-    }
-
-    public void setLeftLeg(Leg leftLeg) {
-        this.leftLeg = leftLeg;
-    }
-
-    public Leg getRightLeg() {
-        return rightLeg;
-    }
-
-    public void setRightLeg(Leg rightLeg) {
-        this.rightLeg = rightLeg;
     }
 
     @Override

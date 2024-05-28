@@ -61,12 +61,4 @@ public class CargoArea {
         storageAreaAirplaneRight.addLast(container);
         calculateCargoAreaWeight();
     }
-
-    public ArrayList<Container> getStorageAreaAirplaneLeft() {
-        return storageAreaAirplaneLeft;
-    }
-
-    public ArrayList<Container> getStorageAreaAirplaneRight() {
-        return storageAreaAirplaneRight;
-    }
 }

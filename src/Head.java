@@ -7,14 +7,6 @@ public class Head {
         this.iris = iris;
     }
 
-    public String getHaircolor() {
-        return hairColor;
-    }
-
-    public void setHaircolor(String hairColor) {
-        this.hairColor = hairColor;
-    }
-
     public String getIris() {
         return iris;
     }

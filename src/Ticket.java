@@ -23,32 +23,12 @@ public class Ticket {
         this.seat = seat;
     }
 
-    public UUID getUuid() {
-        return uuid;
-    }
-
-    public String getBookingID() {
-        return bookingID;
-    }
-
     public String getFlight() {
         return flight;
     }
 
-    public String getFrom() {
-        return from;
-    }
-
     public String getTo() {
         return to;
-    }
-
-    public String getDeparture() {
-        return departure;
-    }
-
-    public String getArrival() {
-        return arrival;
     }
 
     public EClass getBookingClass() {

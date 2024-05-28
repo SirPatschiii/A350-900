@@ -17,14 +17,6 @@ public class Lifter {
         status = "down";
     }
 
-    public String getId() {
-        return id; //returns the ID of the lifter
-    }
-
-    public String getStatus() {
-        return status; //returns the status of the lifter
-    }
-
     //method to transfer a container to the cargo area of the airplane
     public void transferContainer(Container container, CargoArea cargoArea, ESide side) {
         if ("up".equals(status)) {

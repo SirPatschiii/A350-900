@@ -7,14 +7,6 @@ public class Hand {
         this.fingerprint = fingerprint;
     }
 
-    public ESide getHandSide() {
-        return handSide;
-    }
-
-    public void setHandSide(ESide handSide) {
-        this.handSide = handSide;
-    }
-
     public String getFingerprint() {
         return fingerprint;
     }

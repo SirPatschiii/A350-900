@@ -26,10 +26,6 @@ public class Passenger extends Human {
         this.bookingID = bookingID;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public Baggage getBaggage() {
         return baggage;
     }

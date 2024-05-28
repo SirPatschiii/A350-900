@@ -43,10 +43,6 @@ public class FederalPolice {
         return null;
     }
 
-    public List<Prison> getPrisons() {
-        return prisons;
-    }
-
     public List<FederalPoliceOfficer> getOfficers() {
         return officers;
     }
